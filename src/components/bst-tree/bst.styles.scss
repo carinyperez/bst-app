@@ -8,15 +8,19 @@
         justify-content: center;
         align-items: center;
         font-size: 2em;
+        animation: colorChange 1s linear;
     }
-
 }
-
 
 p, li {
     color: black; 
 
 }
 
+@keyframes colorChange {
+    100% {background-color: green}
+    50% {background-color: green} 
+    0% {background-color: gold;}
+}
 
 

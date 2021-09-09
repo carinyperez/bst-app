@@ -2,13 +2,20 @@ import './bst.styles.scss';
 import BST from './bst'; 
 import { useState, useEffect, useCallback} from 'react';
 
-
 const BSTTree = () => {
     const bst = new BST(); 
     let [node, setNode] = useState(''); 
     let [order, setOrder] = useState('');
-    let [arr, setArr] = useState(''); 
+    let [arr, setArr] = useState('');
 
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyPress)
+        arr && insertNode(arr); 
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, [arr])
+ 
     const insertNode = (arr) => {
         setNode(bst.minHeight(arr));
         setOrder(bst.bfs())
@@ -21,23 +28,23 @@ const BSTTree = () => {
             }
             setArr([...arr,randomNumber(-100, 100)]); 
         }
-    }) 
-    useEffect(() => {
-        window.addEventListener('keydown', handleKeyPress)
-        arr && insertNode(arr); 
-        return () => {
-            window.removeEventListener('keydown', handleKeyPress);
-        };
-    }, [arr])
-    
+    })
+
+    const removeNode = (event) => {
+        setArr(arr.filter(el => el !== parseInt(event.target.innerHTML)))
+    }
+
     return (
-        <div>
+            <div>
             <p>Click the space bar or the return key to insert a node</p>
+            <p>Mouse click on a node to delete it from the tree</p>
             {order && order.map(el => 
-            <div class="tf-tree tf-gap-lg">
+            <div className='tf-tree tf-gap-lg'>
                 <ul>
                     <li>
-                        <span class="tf-nc" key={el.val}>{el.val}</span>
+                        <span className="tf-nc" key={el.val}
+                        onClick={removeNode}
+                        >{el.val}</span>
                         <ul>
                             <li><span class="tf-nck" key={el}>{el.left ? el.left.val : ''}</span></li>
                             <li><span key={el}>{el.right ? el.right.val : ''}</span></li>

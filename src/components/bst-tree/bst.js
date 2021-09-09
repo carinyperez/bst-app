@@ -49,9 +49,9 @@ class BST {
         this.insert(arr[middle]); 
         console.log(arr);
         while (middle) {
-            console.log(arr); 
-            console.log(`Middle is ${arr[middle]}`);
-            console.log(rightSubtree,leftSubtree);
+            // console.log(arr); 
+            // console.log(`Middle is ${arr[middle]}`);
+            // console.log(rightSubtree,leftSubtree);
             this.minHeight(rightSubtree);
             this.minHeight(leftSubtree);
             break;
