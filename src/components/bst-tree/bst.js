@@ -21,9 +21,9 @@ class BST {
             let current = this.root; // 1            
              // infinite loop 
             while(true) {
-                // if(val === current.value) return undefined; 
+                if(val === current.value) return undefined; 
                 if(newNode.val >= current.val) {
-                    console.log('Go right'); 
+                    // console.log('Go right'); 
                     if(current.right === null) {
                         current.right = newNode;
                         return this;  
@@ -31,7 +31,7 @@ class BST {
                         current = current.right;
                     }
                 } else { 
-                    console.log('Go left');
+                    // console.log('Go left');
                     if(current.left === null) {
                         current.left = newNode; 
                         return this; 
@@ -47,13 +47,14 @@ class BST {
         let rightSubtree = arr.slice(middle + 1, arr.length); 
         let leftSubtree = arr.slice(0, middle);
         this.insert(arr[middle]); 
+        console.log(arr);
         while (middle) {
             console.log(arr); 
             console.log(`Middle is ${arr[middle]}`);
             console.log(rightSubtree,leftSubtree);
             this.minHeight(rightSubtree);
             this.minHeight(leftSubtree);
-            break; 
+            break;
         }
         return this; 
     } 
@@ -76,7 +77,7 @@ class BST {
             }
 
         }
-        return visited[0] 
+        return visited
     }
 }
 
