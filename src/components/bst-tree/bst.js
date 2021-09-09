@@ -55,7 +55,7 @@ class BST {
             this.minHeight(leftSubtree);
             break; 
         }
-        return this;
+        return this; 
     } 
     bfs() {
         let queue = []; // ![] is false, so empty is truthy, !0 is true so 0 is falsy, but non-empty array is true 
@@ -76,7 +76,7 @@ class BST {
             }
 
         }
-        return visited 
+        return visited[0] 
     }
 }
 

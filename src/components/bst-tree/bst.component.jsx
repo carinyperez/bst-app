@@ -16,21 +16,34 @@ const BSTTree = () => {
     return (
         <div>
             <button onClick={() => handleClick()}>Insert Node</button>
-            {order && order.map(el =>
-            <div class="tf-tree tf-gap-lg">
-                <ul>
-                    <li>
-                        <span class="tf-nc" key={el.val}>{el.val}</span>
-                        <ul>
-                            <li><span class="tf-nck" key={el}>{el.left ? el.left.val : ''}</span></li>
-                            <li><span key={el}>{el.right ? el.right.val : ''}</span></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            )}
-        </div>     
-    )
+            {
+                order && 
+                <div class="tf-tree tf-gap-lg">
+                    <ul>
+                        <li>
+                            <span class="tf-nc" key={order.val}>{order.val}</span>
+                            <ul>
+                                <li>
+                                    <span class="tf-nc" key={order.val}>{order.left ? order.left.val : ''}</span>
+                                    <ul>
+                                        <li><span class="tf-nc" key={order.val}>{order.left.left ? order.left.left.val : ''}</span></li>
+                                        <li><span class="tf-nc" key={order.val}>{order.left.right ? order.left.right.val : ''}</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="tf-nc" key={order.val}>{order.right ? order.right.val : ''}</span>
+                                    <ul>
+                                        <li><span class="tf-nc" key={order.val}>{order.right.left ? order.right.left.val : ''}</span></li>
+                                        <li><span class="tf-nc" key={order.val}>{order.right.right ? order.right.right.val : ''}</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            }
+        </div> 
+    )    
 }
 
 export default BSTTree; 
